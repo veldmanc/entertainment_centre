@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="q-RBA0xoaWU" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUzNTc0NTAyM15BMl5BanBnXkFtZTgwMTk1ODA5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Magnificent Seven</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="tV_IhWE4LP0" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTA1NDg2MzM5NDleQTJeQWpwZ15BbWU4MDA5OTg5MTkx._V1_SX300.jpg" width="220" height="342">
+    <h2>Miss Peregrine's Home for Peculiar Children</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="7BWWWQzTpNU" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjI4NzA5OTg1OF5BMl5BanBnXkFtZTgwNzc0MjU5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Passengers</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="S-UPJyEHmM0" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BOTEzNDU0OTgxM15BMl5BanBnXkFtZTgwNjA0ODM2OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Deepwater Horizon</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="CmRih_VtVAs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjM1OTMxNzUyM15BMl5BanBnXkFtZTgwNjYzMTIzOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Suicide Squad</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="HSzx-zryEgM" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjM2ODA4MTM0M15BMl5BanBnXkFtZTgwNzE5OTYxMDI@._V1_SX300.jpg" width="220" height="342">
+    <h2>Doctor Strange</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="mjKEXxO2KNE" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTg5NTUwNDIyOV5BMl5BanBnXkFtZTgwMjI2OTc3OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Sully</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="4v92gXetGqA" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk0OTEyMjM1OF5BMl5BanBnXkFtZTgwMzMzODM4ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Swiss Army Man</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="w3ugHP-yZXw" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3OTM4NTM4NV5BMl5BanBnXkFtZTgwOTI3NDc0OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Ghostbusters</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="y5yk-HGqKmM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNjc3OTcxNDk5NV5BMl5BanBnXkFtZTgwODUwMTc5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Girl on the Train</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="dCyv5xKIqlw" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODgzN2E1YjctODg5Yi00YzYwLWJjZjAtNDg2MGE2Y2MyYjBmXkEyXkFqcGdeQXVyNjM1MTQ0NTQ@._V1_SX300.jpg" width="220" height="342">
+    <h2>Star Trek Beyond</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="mJsvmscPY9w" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMTI0MjIyOV5BMl5BanBnXkFtZTgwMzEyMjQ1ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Bridget Jones's Baby</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="-m0aIyOEe60" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxNjI3MzcwMF5BMl5BanBnXkFtZTgwOTIyNDY5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Storks</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="zIkzuXDhCcQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNTA5MjAyOTgzN15BMl5BanBnXkFtZTgwODc5OTg2OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Masterminds</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="EgdxIlSuB70" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MTA4MzU4Ml5BMl5BanBnXkFtZTgwNjUxNjczODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Shallows</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="QlSAiI3xMh4" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTg2MzYzNzgzOF5BMl5BanBnXkFtZTgwOTg4NzQ4OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Snowden</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="76yBTNDB6vU" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BZGI5ZTU2M2YtZWY4MC00ZDFhLTliYTItZTk1NjdlN2NkMzg2XkEyXkFqcGdeQXVyMjY5ODI4NDk@._V1_SX300.jpg" width="220" height="342">
+    <h2>Don't Breathe</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="33MtR-g4Jcg" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjM4NDIxNzI5Nl5BMl5BanBnXkFtZTgwMTg4NTY5NzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Mike and Dave Need Wedding Dates</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="dLmKio67pVQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzY3OTI0OTcyMF5BMl5BanBnXkFtZTgwNjkxNTAwOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Legend of Tarzan</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="N7_M4hjXW1I" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTEwNzM2NjY2MTNeQTJeQWpwZ15BbWU4MDQ3MDI3Njgx._V1_SX300.jpg" width="220" height="342">
+    <h2>The Infiltrator</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="girSv9UH_V8" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjI0NTEyMjA3NV5BMl5BanBnXkFtZTgwODk5OTU4OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Blair Witch</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="3CKgLNGfdSM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjM4NDQ0NTYyMV5BMl5BanBnXkFtZTgwNTIxMjY3ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Teenage Mutant Ninja Turtles: Out of the Shadows</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="4hqR1JAZhmg" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNTE0NTMzNjE0NV5BMl5BanBnXkFtZTgwMzM4NTM3OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>31</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="hfnDTvbtDUI" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTkzMzY3MzYzNF5BMl5BanBnXkFtZTgwNzgzMTA3OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>I.T.</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5mkm22yO-bs" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3NTUzNTI4MV5BMl5BanBnXkFtZTgwNjU0NjU5NzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Jungle Book</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="i-80SGWfEjM" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIzMzA1OTkzNV5BMl5BanBnXkFtZTgwODE3MjM4NzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Secret Life of Pets</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="frdj1zb9sMY" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMzI2OTA3OF5BMl5BanBnXkFtZTgwNDg5NjQ0OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Rogue One: A Star Wars Story</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Eh993__rOxA" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NjE4NDE2NV5BMl5BanBnXkFtZTgwOTcwNDE5NzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Me Before You</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="MxW4LZCYfvs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjcwNDA5MDYyNl5BMl5BanBnXkFtZTgwNjg0NDkzNzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Nice Guys</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JY0DGLrd9GY" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjAxODQ2MzkyMV5BMl5BanBnXkFtZTgwNjU3MTE5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>ARQ</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="x3IWwnNe5mc" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2NjExMTIyN15BMl5BanBnXkFtZTgwMjg0OTIwODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Alice Through the Looking Glass</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="c7fP9q_LyDc" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjkxOTk1MzY4MF5BMl5BanBnXkFtZTgwODQzOTU5ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Sausage Party</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="3EMkxEKKSQI" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTA4NTYyMTcwNTFeQTJeQWpwZ15BbWU4MDI0NTg0MDkx._V1_SX300.jpg" width="220" height="342">
+    <h2>Free State of Jones</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="9rqIJcY9hMc" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjMxNzk2OTQ1OV5BMl5BanBnXkFtZTgwMTI2NjU5ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Purge: Election Year</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="LI6U_W2usxA" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUxNjg1ODY3Ml5BMl5BanBnXkFtZTgwODEyNjUzOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Goat</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="m8pGJBgiiDU" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNTI3NzY1MWYtYTZiYy00YzM0LTliOWYtNGE5OGRhYWQ4N2RjXkEyXkFqcGdeQXVyMTY4Mjk3MzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Paterson</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="AuEjHzOIgBE" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNzQ0NDgwODQ3NV5BMl5BanBnXkFtZTgwOTYxNjc2ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Now You See Me 2</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="AMgyWT075KY" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjM5NzIxNzk2OV5BMl5BanBnXkFtZTgwNzM5NzQ3OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Arrival</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JQoqsKoJVDw" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTg4NDA1OTA5NF5BMl5BanBnXkFtZTgwMDQ2MDM5ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Hell or High Water</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="cipOTUO0CmU" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNTAyOTkxNTQ3NV5BMl5BanBnXkFtZTgwMjQ1NzQxOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Neon Demon</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="y1SpWZm1PLc" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk1MDQxNDQzMV5BMl5BanBnXkFtZTgwNDY1MDQ3OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>American Honey</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="MxEw3elSJ8M" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA2NzEzNjIwNl5BMl5BanBnXkFtZTgwNzgwMTEzNzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Central Intelligence</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="QF903RaKLvs" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjYwODExNzUwMV5BMl5BanBnXkFtZTgwNTgwNjUyOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Mechanic: Resurrection</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="F4gJsKZvqE4" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTU1ODg2OTU1MV5BMl5BanBnXkFtZTgwMzA5OTg2ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Jason Bourne</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="x73-573aWfs" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzODU1OTkwN15BMl5BanBnXkFtZTgwMDA3MTMwMDI@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Space Between Us</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="eX_iASz1Si8" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg" width="220" height="342">
+    <h2>Batman v Superman: Dawn of Justice</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="RH2BD49sEZI" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzBmZDU2ZjAtYzk4OS00MmFiLTllNTctZTNkODlmYjUyMDc0XkEyXkFqcGdeQXVyNjcyNzU4NDQ@._V1_SX300.jpg" width="220" height="342">
+    <h2>Inferno</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="HjGkB_oWTe0" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjQ0NzA4NDcxM15BMl5BanBnXkFtZTgwMTk1NjUzOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Girl with All the Gifts</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="E6l4xrEjFY8" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjEzMjI0Mzc5MV5BMl5BanBnXkFtZTgwODExMDgxMDI@._V1_SX300.jpg" width="220" height="342">
+    <h2>True Memoirs of an International Assassin</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="IHBLbGvwO6I" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwNzE5MTgwNl5BMl5BanBnXkFtZTgwNjM4OTA0OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Bad Moms</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Rl4X6pFfmTI" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNjk1NjY4NjE5N15BMl5BanBnXkFtZTgwMTU0NDg0OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Café Society</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="s2-1hz1juBI" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjQ1NjM3MTUxNV5BMl5BanBnXkFtZTgwMDc5MTY5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Hacksaw Ridge</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="vnq8jZejw-s" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ5Njk4OTgzNV5BMl5BanBnXkFtZTgwMDc0OTAxMDI@._V1_SX300.jpg" width="220" height="342">
+    <h2>Trespass Against Us</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="aRwrdbcAh2s" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODQ3ODQ3NDI4NV5BMl5BanBnXkFtZTgwMDY1Mzk5OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Jack Reacher: Never Go Back</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="DBfsgcswlYQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNDc5Mzg2NTYxNV5BMl5BanBnXkFtZTgwMjQ2ODAwOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Accountant</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="eGvTRG-iud8" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk3MzU4ODk1Ml5BMl5BanBnXkFtZTgwNzc5MzE2OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Blood Father</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="qr_nGAbFkmk" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzMjU1NDUwMl5BMl5BanBnXkFtZTgwODg1NjY0ODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Money Monster</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="p4-6qJzeb3A" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA2Mzg2NDMzNl5BMl5BanBnXkFtZTgwMjcwODUzOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Kubo and the Two Strings</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="AX1BTiHzq-I" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUzOTg1OTM4NV5BMl5BanBnXkFtZTgwMTg2Mjg0OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Nerve</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Rwh9c_E3dJk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjEyNzQ0NzM4MV5BMl5BanBnXkFtZTgwMDI0ODM2OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>War Dogs</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="AL2TShb6fFs" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNGI1MTI1YTQtY2QwYi00YzUzLTg3NWYtNzExZDlhOTZmZWU0XkEyXkFqcGdeQXVyMDkwNTkwNg@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Pink</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="nPfYXXg65qA" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNTA2NDUzODEyM15BMl5BanBnXkFtZTgwMDE5MDExMDI@._V1_SX300.jpg" width="220" height="342">
+    <h2>Keeping Up with the Joneses</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="nDNgs0dgjj4" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY4ODgyODkwMF5BMl5BanBnXkFtZTgwNzM0NDQxNzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Friend Request</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="TSADYQgDLfI" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNzNmYjY5ZTctYmQ3Ny00ZmM0LWE5YzgtZjc2YmRlMzg5ZjA1XkEyXkFqcGdeQXVyMjU5NDgzOTM@._V1_SX300.jpg" width="220" height="342">
+    <h2>20th Century Women</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="i18z1EQCoyg" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTUyMDE5MDgzOF5BMl5BanBnXkFtZTgwMjk2NjU0OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Birth of a Nation</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="YSX-mpsVutQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BNTI1NzQzMjgxOF5BMl5BanBnXkFtZTgwOTY1OTY2OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Light Between Oceans</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="HyLquKn3Swc" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwMTk2ODc1OV5BMl5BanBnXkFtZTgwMzU4MzgzOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Ice Age: Collision Course</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="TlyenjHEmZE" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BYjY1MzY1NDItNzAzMS00MWQ1LTgwYTEtOGY3YzA4NGFhYTk4XkEyXkFqcGdeQXVyNjMxOTMwNzA@._V1_SX300.jpg" width="220" height="342">
+    <h2>Laid in America</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="3AsOdX7NcJs" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1ODY2MTgwM15BMl5BanBnXkFtZTgwOTY3Nzc3NzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>London Has Fallen</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="_f5a0MfhY3A" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc4MTk3Mzk4NV5BMl5BanBnXkFtZTgwMDgzNDUyOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>When the Bough Breaks</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5MBjAN7jqsQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjU3OTQ5NDc3Ml5BMl5BanBnXkFtZTgwOTEwNTkxNzE@._V1_SX300.jpg" width="220" height="342">
+    <h2>13 Hours</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="wIXTB9wtqxA" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjE4MDkwNTU1NF5BMl5BanBnXkFtZTgwOTMwMDg2OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Good Neighbor</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="3yhDZHRaSlI" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNzA0OTk5MDY5OF5BMl5BanBnXkFtZTgwMjMwOTgyOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Dirty 30</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="DBUXcNTjviI" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>La La Land</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="fPOamb6d_20" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjA4NDYxNzYzOF5BMl5BanBnXkFtZTgwNzU1NzcwODE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Pete's Dragon</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="I3lFBq7_CPk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTk5MzY4MDkwOV5BMl5BanBnXkFtZTgwMzY4MzczOTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Imperium</h2>
+</div>
+
+    </div>
+  </body>
+</html>
